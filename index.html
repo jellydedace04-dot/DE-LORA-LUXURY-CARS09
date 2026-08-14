@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DE'LORA Automotive Group | Driven by Excellence</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN for utility baseline + dynamic custom system -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#08080a',
+            charcoal: '#111114',
+            surface: '#18181c',
+            'surface-light': '#222228',
+            gold: {
+              DEFAULT: '#d4af37',
+              light: '#f3e5ab',
+              dark: '#aa8c2c',
+              glow: 'rgba(212, 175, 55, 0.25)'
+            },
+            ivory: '#f8f8f6'
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Montserrat', 'sans-serif']
+          },
+          screens: {
+            'xs': '375px',
+            'sm': '480px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px',
+            '3xl': '1920px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Luxury Styling & Responsive Rules */
+    :root {
+      --obsidian: #08080a;
+      --charcoal: #111114;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --ivory: #f8f8f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background-color: var(--obsidian);
+      color: var(--ivory);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      width: 100%;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--obsidian);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a30;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    /* Glassmorphism & Gold Effects */
+    .glass-card {
+      background: rgba(17, 17, 20, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    
+    .glass-nav {
+      background: rgba(8, 8, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .gold-glow-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gold-glow-hover:hover {
+      box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #f3e5ab 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border-gradient {
+      border-image: linear-gradient(to right, rgba(212,175,55,0.😎, rgba(212,175,55,0.1)) 1;
+    }
+
+    /* Keyframe Animations */
+    @keyframes kenburns {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.08) translate(-1%, -1%); }
+      100% { transform: scale(1) translate(0, 0); }
+    }
+    .animate-kenburns {
+      animation: kenburns 25s ease infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 4s infinite ease-in-out;
+    }
+
+    /* Modal Touch Overrides */
+    .modal-open {
+      overflow: hidden !important;
+    }
+
+    /* Hide scrollbars for slick sliders */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+    }
+
+    /* Toast Notification Positioning */
+    #toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: none;
+    }
+    @media (max-width: 640px) {
+      #toast-container {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+      }
+    }
+    .toast {
+      pointer-events: auto;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(100%) scale(0.9); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-ivory antialiased selection:bg-gold selection:text-obsidian min-h-screen flex flex-col justify-between">
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-obsidian/60 group-hover:border-gold transition-colors">
+          <i class="fa-solid font-cinzel text-gold text-lg">👑</i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-cinzel text-lg sm:text-xl md:text-2xl font-bold tracking-widest text-white group-hover:text-gold transition-colors">DE'LORA</span>
+          <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.25em] text-gold/80 -mt-1 uppercase">Automotive Group</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center space-x-1 xl:space-x-3 text-xs xl:text-sm font-medium uppercase tracking-wider text-gray-300">
+        <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Home</button>
+        <button onclick="navigateTo('showroom')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Showroom</button>
+        <div class="relative group py-2">
+          <button onclick="navigateTo('showroom')" class="nav-btn px-3 py-2 hover:text-gold transition-colors flex items-center gap-1">
+            Categories <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </button>
+          <div class="absolute top-full left-0 w-48 glass-card rounded-md py-2 hidden group-hover:block shadow-2xl border-gold/30">
+            <a href="javascript:void(0)" onclick="filterCategory('Hypercars')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold transition-colors">Hypercars</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Supercars')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold transition-colors">Supercars</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Luxury')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold transition-colors">Luxury Sedans</a>
+            <a href="javascript:void(0)" onclick="filterCategory('Electric')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold transition-colors">Electric Performers</a>
+            <a href="javascript:void(0)" onclick="filterCategory('SUVs')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold transition-colors">Luxury SUVs</a>
+          </div>
+        </div>
+        <button onclick="navigateTo('parts')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Parts & Tuning</button>
+        <button onclick="navigateTo('gallery')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Gallery</button>
+        <button onclick="navigateTo('compare')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Compare</button>
+        <button onclick="navigateTo('financing')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Financing</button>
+        <button onclick="navigateTo('services')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Services</button>
+        <button onclick="navigateTo('about')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">About</button>
+        <button onclick="navigateTo('contact')" class="nav-btn px-3 py-2 hover:text-gold transition-colors">Contact</button>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center space-x-3 sm:space-x-5">
+        <!-- Search Trigger -->
+        <button onclick="scrollToSearch()" class="p-2 text-gray-300 hover:text-gold transition-colors" title="Search Vehicles">
+          <i class="fa-solid fa-magnifying-glass text-lg"></i>
+        </button>
+
+        <!-- Garage / Cart Button -->
+        <button onclick="protectedAction(toggleCartDrawer)" class="relative p-2 text-gray-300 hover:text-gold transition-colors" title="Your Garage Cart">
+          <i class="fa-solid fa-warehouse text-lg"></i>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-obsidian text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border border-obsidian hidden">0</span>
+        </button>
+
+        <!-- User / Auth Profile -->
+        <div id="auth-header-container" class="relative">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-300 hover:text-gold focus:outline-none">
+          <i id="hamburger-icon" class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer & Backdrop -->
+  <div id="mobile-backdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/80 backdrop-blur-md z-40 hidden transition-opacity duration-300 opacity-0 lg:hidden"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 h-full w-[280px] sm:w-[350px] bg-charcoal/95 border-l border-gold/20 z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto lg:hidden flex flex-col justify-between p-6">
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b border-gold/20 pb-4">
+        <div class="flex items-center gap-2">
+          <span class="text-gold text-lg">👑</span>
+          <span class="font-cinzel text-lg font-bold">DE'LORA</span>
+        </div>
+        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Links -->
+      <nav class="flex flex-col space-y-3 font-sans text-sm tracking-wider uppercase">
+        <button onclick="mobileNav('home')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Home</button>
+        <button onclick="mobileNav('showroom')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Showroom</button>
+        <button onclick="mobileNav('parts')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Parts & Accessories</button>
+        <button onclick="mobileNav('gallery')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Media Gallery</button>
+        <button onclick="mobileNav('compare')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Vehicle Comparison</button>
+        <button onclick="mobileNav('financing')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Financing Calculator</button>
+        <button onclick="mobileNav('services')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Concierge Services</button>
+        <button onclick="mobileNav('garage')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold flex justify-between items-center">
+          My Garage <span class="text-xs text-gold font-bold">Protected</span>
+        </button>
+        <button onclick="mobileNav('orders')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold flex justify-between items-center">
+          My Orders <span class="text-xs text-gold font-bold">Protected</span>
+        </button>
+        <button onclick="mobileNav('about')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">About Group</button>
+        <button onclick="mobileNav('contact')" class="text-left py-2 px-3 rounded hover:bg-gold/10 hover:text-gold">Contact Concierge</button>
+      </nav>
+    </div>
+
+    <div class="border-t border-gold/20 pt-4 text-center">
+      <p class="text-xs text-gray-400">DE'LORA Client Services</p>
+      <p class="text-xs text-gold mt-1 font-mono">+63 (0970) 375-8766</p>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW CONTAINER (SPA Sections loaded here) -->
+  <main id="main-content" class="flex-grow pt-20">
+    <!-- Dynamic Content injected via JS based on state -->
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-charcoal border-t border-gold/20 mt-20 pt-16 pb-12 text-gray-400">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      
+      <!-- Col 1: Brand Info -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-obsidian">
+            <span class="text-gold">👑</span>
+          </div>
+          <span class="font-cinzel text-2xl font-bold tracking-widest text-white">DE'LORA</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-400 max-w-sm leading-relaxed">
+          The premier destination for extraordinary automotive engineering. Curating hypercars, bespoke luxury vehicles, and high-performance electric automobiles for discerning collectors worldwide.
+        </p>
+        <div class="flex space-x-4 text-gold pt-2">
+          <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold hover:text-obsidian transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <h4 class="font-cinzel text-white text-sm font-semibold tracking-wider uppercase mb-4 border-b border-gold/20 pb-2 inline-block">Navigation</h4>
+        <ul class="space-y-2 text-xs sm:text-sm">
+          <li><a href="javascript:void(0)" onclick="navigateTo('showroom')" class="hover:text-gold transition-colors">Vehicle Showroom</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('parts')" class="hover:text-gold transition-colors">Bespoke Parts & Tuning</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('gallery')" class="hover:text-gold transition-colors">Media Gallery</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('compare')" class="hover:text-gold transition-colors">Spec Comparison</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('financing')" class="hover:text-gold transition-colors">Financing Portal</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div>
+        <h4 class="font-cinzel text-white text-sm font-semibold tracking-wider uppercase mb-4 border-b border-gold/20 pb-2 inline-block">Ownership</h4>
+        <ul class="space-y-2 text-xs sm:text-sm">
+          <li><a href="javascript:void(0)" onclick="protectedAction(() => navigateTo('garage'))" class="hover:text-gold transition-colors">My Client Garage</a></li>
+          <li><a href="javascript:void(0)" onclick="protectedAction(() => navigateTo('orders'))" class="hover:text-gold transition-colors">Track Orders & Delivery</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('services')" class="hover:text-gold transition-colors">White-Glove Logistics</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('services')" class="hover:text-gold transition-colors">Trackside Support</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('about')" class="hover:text-gold transition-colors">Executive Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Executive Contact -->
+      <div>
+        <h4 class="font-cinzel text-white text-sm font-semibold tracking-wider uppercase mb-4 border-b border-gold/20 pb-2 inline-block">Direct Concierge</h4>
+        <div class="text-xs sm:text-sm space-y-3">
+          <div>
+            <p class="text-gold font-medium">Jelly Mae L. Dedace</p>
+            <p class="text-gray-400">Co-Owner & Executive Director</p>
+            <p class="font-mono text-gray-300">09703758766</p>
+            <p class="text-gray-400">jellydedace04@gmail.com</p>
+          </div>
+          <div class="pt-2">
+            <p class="text-gold font-medium">Jamaica S. Dominguez</p>
+            <p class="text-gray-400">Co-Owner & Automotive Director</p>
+            <p class="font-mono text-gray-300">09687215497</p>
+            <p class="text-gray-400">jamaica.dominguez01@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 mt-12 pt-6 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+      <p>© 2026 DE'LORA Automotive Group. All Rights Reserved. Designed for Supreme Performance.</p>
+      <div class="flex space-x-6">
+        <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-gold transition-colors">Terms of Ownership</a>
+        <a href="#" class="hover:text-gold transition-colors">Cookie Preferences</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & DRAWERS ==================== -->
+
+  <!-- AUTHENTICATION MODAL -->
+  <div id="auth-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden transition-opacity duration-300 opacity-0">
+    <div class="relative w-full max-w-md glass-card rounded-xl p-6 sm:p-8 border border-gold/30 shadow-2xl overflow-y-auto max-h-[90vh]">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="inline-block p-3 rounded-full border border-gold/30 mb-2">
+          <span class="text-2xl">👑</span>
+        </div>
+        <h3 class="font-cinzel text-2xl font-bold text-white">DE'LORA PORTAL</h3>
+        <p id="auth-subtitle" class="text-xs text-gold mt-1">Sign in required to access private garage features</p>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="flex border-b border-gray-700 mb-6">
+        <button id="tab-login-btn" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-gold text-gold">Sign In</button>
+        <button id="tab-register-btn" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-white">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Email Address</label>
+          <input type="email" id="login-email" required placeholder="client@delora.com" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <label class="flex items-center text-gray-400 cursor-pointer">
+            <input type="checkbox" checked class="rounded border-gray-700 bg-obsidian text-gold focus:ring-0 mr-2">
+            Remember Me
+          </label>
+          <a href="#" class="text-gold hover:underline">Forgot Password?</a>
+        </div>
+        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors shadow-lg shadow-gold/20 mt-2">
+          Authenticate Access
+        </button>
+        <p class="text-[11px] text-gray-500 text-center">Demo login: Any email & password will grant VIP access.</p>
+      </form>
+
+      <!-- Registration Form -->
+      <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Full Name</label>
+          <input type="text" id="reg-name" required placeholder="Lord/Lady Alexander Wright" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Email Address</label>
+          <input type="email" id="reg-email" required placeholder="alexander@domain.com" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Phone Number</label>
+          <input type="tel" id="reg-phone" required placeholder="+63 900 000 0000" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Password</label>
+          <input type="password" id="reg-pass" required placeholder="••••••••" class="w-full bg-obsidian/80 border border-gray-700 focus:border-gold rounded px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors shadow-lg shadow-gold/20 mt-2">
+          Create Portfolio Profile
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- VEHICLE PRODUCT DETAIL MODAL -->
+  <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-md hidden transition-opacity duration-300 opacity-0">
+    <div id="product-modal-content" class="relative w-full max-w-5xl glass-card rounded-2xl border border-gold/30 shadow-2xl overflow-y-auto max-h-[92vh] p-4 sm:p-6 lg:p-8">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- SLIDE-IN GARAGE CART DRAWER -->
+  <div id="cart-backdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[90] hidden transition-opacity duration-300 opacity-0"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-charcoal border-l border-gold/30 z-[95] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+    
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-gold/20 flex items-center justify-between bg-obsidian/50">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-warehouse text-gold text-lg"></i>
+        <h3 class="font-cinzel text-lg font-bold text-white">MY GARAGE CART</h3>
+      </div>
+      <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Body Items -->
+    <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-4">
+      <!-- Injected via JS -->
+    </div>
+
+    <!-- Drawer Footer Summary -->
+    <div class="p-5 border-t border-gold/20 bg-obsidian/80 space-y-3">
+      <div class="flex justify-between text-sm text-gray-400">
+        <span>Vehicles & Parts Subtotal</span>
+        <span id="cart-subtotal" class="font-mono text-white">₱0</span>
+      </div>
+      <div class="flex justify-between text-sm text-gray-400">
+        <span class="flex items-center gap-1">White-Glove Delivery <i class="fa-solid fa-circle-info text-[10px]" title="Flat rate insured global transport"></i></span>
+        <span id="cart-delivery" class="font-mono text-white">₱250,000</span>
+      </div>
+      <div class="border-t border-gray-800 pt-2 flex justify-between text-base font-bold text-gold">
+        <span>Total Estimated Investment</span>
+        <span id="cart-total" class="font-mono text-lg">₱0</span>
+      </div>
+      <button onclick="openCheckoutModal()" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg shadow-gold/20 mt-2">
+        <span>Proceed to Acquisition</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-md hidden transition-opacity duration-300 opacity-0">
+    <div class="relative w-full max-w-3xl glass-card rounded-2xl border border-gold/40 shadow-2xl overflow-y-auto max-h-[92vh] p-6 lg:p-8">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="border-b border-gold/20 pb-4 mb-6">
+        <span class="text-gold text-xs uppercase tracking-widest">DE'LORA VIP Direct Acquisition</span>
+        <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white mt-1">Acquisition Agreement</h2>
+      </div>
+
+      <form id="checkout-form" onsubmit="processCheckout(event)" class="space-y-6">
+        <!-- Client Details -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase text-gray-400 mb-1">Full Legal Name</label>
+            <input type="text" id="chk-name" required class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs uppercase text-gray-400 mb-1">Contact Email</label>
+            <input type="email" id="chk-email" required class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs uppercase text-gray-400 mb-1">Delivery Destination Address</label>
+            <input type="text" id="chk-address" required placeholder="Residence, Estate, or Hangar Location" class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Payment Option -->
+        <div>
+          <label class="block text-xs uppercase text-gold font-semibold tracking-wider mb-2">Preferred Transfer Method</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="border border-gold/40 rounded p-3 bg-obsidian/60 cursor-pointer flex items-center gap-2 hover:border-gold">
+              <input type="radio" name="payment-method" value="Bank Wire Transfer" checked class="text-gold focus:ring-0">
+              <span class="text-xs font-semibold">Bank Wire Transfer</span>
+            </label>
+            <label class="border border-gray-700 rounded p-3 bg-obsidian/60 cursor-pointer flex items-center gap-2 hover:border-gold">
+              <input type="radio" name="payment-method" value="Black Card / Credit" class="text-gold focus:ring-0">
+              <span class="text-xs font-semibold">Concierge Card</span>
+            </label>
+            <label class="border border-gray-700 rounded p-3 bg-obsidian/60 cursor-pointer flex items-center gap-2 hover:border-gold">
+              <input type="radio" name="payment-method" value="GCash VIP / Maya" class="text-gold focus:ring-0">
+              <span class="text-xs font-semibold">GCash / Maya VIP</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="bg-obsidian/90 border border-gold/20 rounded p-4 space-y-2">
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Selected Assets</span>
+            <span id="chk-subtotal" class="font-mono text-white">₱0</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Insured White-Glove Logistics</span>
+            <span class="font-mono text-white">₱250,000</span>
+          </div>
+          <div class="border-t border-gray-800 pt-2 flex justify-between text-base font-bold text-gold">
+            <span>Total Payable Amount</span>
+            <span id="chk-total" class="font-mono text-lg">₱0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-4 rounded text-sm uppercase tracking-wider transition-colors shadow-xl shadow-gold/20">
+          Confirm Order & Dispatch Concierge
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- ==================== APPLICATION LOGIC (JS DATASET & SPA) ==================== -->
+  <script>
+    /* ==========================================================================
+       1. DATASETS (Handcrafted Luxury Automobiles & Accessories)
+       ========================================================================== */
+    const VEHICLES_DATA = [
+      {
+        id: "v1",
+        brand: "Bugatti",
+        model: "Tourbillon Heritage Edition",
+        category: "Hypercars",
+        year: 2026,
+        price: 260000000,
+        horsepower: "1,800 HP",
+        topSpeed: "445 km/h",
+        acceleration: "2.0s (0-100 km/h)",
+        engine: "8.3L Naturally Aspirated V16 + 3 Electric Motors",
+        transmission: "8-Speed Dual-Clutch Dual-Shaft",
+        drivetrain: "All-Wheel Drive",
+        fuel: "Hybrid / High-Octane",
+        weight: "1,995 kg",
+        stock: "1 of 25 Worldwide",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80"
+        ],
+        description: "The pinnacle of horological automotive design. Featuring a skeletonized analog instrument cluster crafted by Swiss watchmakers and an ethereal atmospheric V16 spine."
+      },
+      {
+        id: "v2",
+        brand: "Koenigsegg",
+        model: "Jesko Absolut Carbon",
+        category: "Hypercars",
+        year: 2025,
+        price: 210000000,
+        horsepower: "1,600 HP",
+        topSpeed: "530 km/h",
+        acceleration: "2.5s (0-100 km/h)",
+        engine: "5.0L Twin-Turbo Flat-Plane V8",
+        transmission: "9-Speed Light Speed Transmission (LST)",
+        drivetrain: "Rear-Wheel Drive with E-Diff",
+        fuel: "E85 / FlexFuel",
+        weight: "1,390 kg",
+        stock: "2 Units Allocated",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80"
+        ],
+        description: "Engineered with zero downforce drag configuration aimed directly at shattering the land speed record. Every weave of raw carbon fiber is alignment-matched."
+      },
+      {
+        id: "v3",
+        brand: "Pagani",
+        model: "Utopia Bespoke Gold Weave",
+        category: "Hypercars",
+        year: 2026,
+        price: 195000000,
+        horsepower: "864 HP",
+        topSpeed: "380 km/h",
+        acceleration: "2.8s (0-100 km/h)",
+        engine: "6.0L Twin-Turbo AMG V12",
+        transmission: "7-Speed Gated Manual Transaxle",
+        drivetrain: "Rear-Wheel Drive",
+        fuel: "Petrol",
+        weight: "1,280 kg",
+        stock: "1 Available in Vault",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=1200&q=80"],
+        description: "Six years in development. Pure mechanical elegance rejecting modern screen overload in favor of exposed gear linkage, milled titanium controls, and timeless sculpture."
+      },
+      {
+        id: "v4",
+        brand: "Ferrari",
+        model: "SF90 XX Stradale Speciale",
+        category: "Supercars",
+        year: 2025,
+        price: 68000000,
+        horsepower: "1,030 HP",
+        topSpeed: "320 km/h",
+        acceleration: "2.3s (0-100 km/h)",
+        engine: "3.9L Twin-Turbo V8 + 3 Electric Motors",
+        transmission: "8-Speed F1 Dual-Clutch",
+        drivetrain: "e4WD All-Wheel Drive",
+        fuel: "PHEV Electric/Petrol",
+        weight: "1,560 kg",
+        stock: "Immediate Dispatch",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80"],
+        description: "The first road-legal XX vehicle from Maranello. Derived straight from motorsport aero experiments, producing unprecedented downforce and raw lap times."
+      },
+      {
+        id: "v5",
+        brand: "Lamborghini",
+        model: "Revuelto V12 Hybrid Opera Unica",
+        category: "Supercars",
+        year: 2025,
+        price: 52000000,
+        horsepower: "1,015 HP",
+        topSpeed: "350 km/h",
+        acceleration: "2.5s (0-100 km/h)",
+        engine: "6.5L Naturally Aspirated V12 + 3 Motors",
+        transmission: "8-Speed Dual-Clutch Transverse",
+        drivetrain: "All-Wheel Drive",
+        fuel: "Hybrid Petrol/Electric",
+        weight: "1,772 kg",
+        stock: "3 Units Ready",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1519245659620-e859806a8d3b?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1519245659620-e859806a8d3b?auto=format&fit=crop&w=1200&q=80"],
+        description: "The inauguration of the HPEV (High Performance Electrified Vehicle) era. Combines screaming high-rpm V12 acoustics with Instant Torque vectoring."
+      },
+      {
+        id: "v6",
+        brand: "Rolls-Royce",
+        model: "Phantom Extended Series II Obsidian",
+        category: "Luxury",
+        year: 2026,
+        price: 78000000,
+        horsepower: "563 HP",
+        topSpeed: "250 km/h",
+        acceleration: "5.1s (0-100 km/h)",
+        engine: "6.75L Twin-Turbo V12",
+        transmission: "8-Speed Satellite-Aided Automatic",
+        drivetrain: "Rear-Wheel Drive",
+        fuel: "Petrol",
+        weight: "2,670 kg",
+        stock: "Bespoke Reserve",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1200&q=80"],
+        description: "An sanctuary of serene quietude. Features a custom glass 'Gallery' dashboard housing hand-sculpted gold leaf art and starlight headliner with falling meteor effects."
+      },
+      {
+        id: "v7",
+        brand: "Bentley",
+        model: "Mulsanne Grand Limousine Mulliner",
+        category: "Luxury",
+        year: 2025,
+        price: 62000000,
+        horsepower: "530 HP",
+        topSpeed: "296 km/h",
+        acceleration: "4.9s (0-100 km/h)",
+        engine: "6.75L Twin-Turbocharged L-Series V8",
+        transmission: "8-Speed ZF Automatic",
+        drivetrain: "Rear-Wheel Drive",
+        fuel: "Petrol",
+        weight: "2,730 kg",
+        stock: "1 of 5 Coachbuilt",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80"],
+        description: "Coachbuilt exclusively by Mulliner with face-to-face luxury cabin seating, electrochromic smart glass partitions, and silver champagne coolers."
+      },
+      {
+        id: "v8",
+        brand: "Rimac",
+        model: "Nevera R Hyper EV",
+        category: "Electric",
+        year: 2026,
+        price: 180000000,
+        horsepower: "2,107 HP",
+        topSpeed: "412 km/h",
+        acceleration: "1.74s (0-100 km/h)",
+        engine: "Quad-Motor Liquid-Cooled Electric System",
+        transmission: "Single-Speed Direct Drive (x4)",
+        drivetrain: "All-Wheel Torque Vectoring 3.0",
+        fuel: "108 kWh Lithium-Manganese-Nickel",
+        weight: "2,277 kg",
+        stock: "Allocated",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80"],
+        description: "Rewriting the laws of physics. Capable of pull-down G-forces that redefine acceleration limits, paired with Next-Gen AI Driver Coach track overlay."
+      },
+      {
+        id: "v9",
+        brand: "Porsche",
+        model: "Taycan Turbo GT Weissach Package",
+        category: "Electric",
+        year: 2025,
+        price: 24000000,
+        horsepower: "1,092 HP",
+        topSpeed: "305 km/h",
+        acceleration: "2.2s (0-100 km/h)",
+        engine: "Dual Permanent Magnet Synchronous Motors",
+        transmission: "2-Speed Rear / 1-Speed Front",
+        drivetrain: "Porsche Traction Management AWD",
+        fuel: "105 kWh Performance Battery Plus",
+        weight: "2,225 kg",
+        stock: "In Showroom",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1611821064430-0d40291d0f0d?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1611821064430-0d40291d0f0d?auto=format&fit=crop&w=1200&q=80"],
+        description: "The holder of the Nürburgring Nordschleife EV production record. Features active aero rear wing and carbon bucket seats built directly into the monocoque."
+      },
+      {
+        id: "v10",
+        brand: "Aston Martin",
+        model: "DBX707 AMR24 Edition",
+        category: "SUVs",
+        year: 2025,
+        price: 31000000,
+        horsepower: "707 HP",
+        topSpeed: "310 km/h",
+        acceleration: "3.3s (0-100 km/h)",
+        engine: "4.0L Twin-Turbo V8",
+        transmission: "9-Speed Wet-Clutch Automatic",
+        drivetrain: "All-Wheel Drive with Active Center E-Diff",
+        fuel: "Petrol",
+        weight: "2,245 kg",
+        stock: "2 Units Available",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80"],
+        description: "The world's most powerful luxury SUV, presented in F1 Racing Green with lime accents and carbon ceramic brake system as standard."
+      },
+      {
+        id: "v11",
+        brand: "McLaren",
+        model: "750S Spider MSO Carbon Series",
+        category: "Supercars",
+        year: 2025,
+        price: 45000000,
+        horsepower: "750 HP",
+        topSpeed: "332 km/h",
+        acceleration: "2.7s (0-100 km/h)",
+        engine: "4.0L Twin-Turbo M840T V8",
+        transmission: "7-Speed Seamless Shift Gearbox (SSG)",
+        drivetrain: "Rear-Wheel Drive",
+        fuel: "Petrol",
+        weight: "1,389 kg",
+        stock: "In Vault",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=1200&q=80"],
+        description: "Engineered with zero dynamic compromise between coupe and convertible. Unforgiving lightness combined with Proactive Chassis Control III."
+      },
+      {
+        id: "v12",
+        brand: "Mercedes-Maybach",
+        model: "Haute Voiture S 680 V12",
+        category: "Luxury",
+        year: 2026,
+        price: 48000000,
+        horsepower: "621 HP",
+        topSpeed: "250 km/h",
+        acceleration: "4.5s (0-100 km/h)",
+        engine: "6.0L Biturbo V12",
+        transmission: "9G-TRONIC Automatic",
+        drivetrain: "4MATIC All-Wheel Drive",
+        fuel: "Petrol",
+        weight: "2,350 kg",
+        stock: "1 of 150 Worldwide",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80"],
+        description: "Inspired by High Fashion Haute Couture. Bouclé fabric accents, rose gold metallic details, and crystal flutes incorporated directly into the center console."
+      },
+      {
+        id: "v13",
+        brand: "Lamborghini",
+        model: "Urus SE Hybrid",
+        category: "SUVs",
+        year: 2025,
+        price: 36000000,
+        horsepower: "800 HP",
+        topSpeed: "312 km/h",
+        acceleration: "3.4s (0-100 km/h)",
+        engine: "4.0L Twin-Turbo V8 + Electric Motor",
+        transmission: "8-Speed Automatic",
+        drivetrain: "Permanent AWD with Central E-Diff",
+        fuel: "Plug-In Hybrid",
+        weight: "2,505 kg",
+        stock: "In Stock",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1200&q=80"],
+        description: "Combining supercar driving dynamics with green zero-emission urban EV mobility. 800 Nm of instant electrical torque complement the twin-turbo V8 roar."
+      },
+      {
+        id: "v14",
+        brand: "Pininfarina",
+        model: "Battista Revo Carbon",
+        category: "Electric",
+        year: 2026,
+        price: 165000000,
+        horsepower: "1,900 HP",
+        topSpeed: "350 km/h",
+        acceleration: "1.86s (0-100 km/h)",
+        engine: "4 Independent Liquid Cooled Motors",
+        transmission: "Direct Drive",
+        drivetrain: "Full Vectoring All-Wheel Drive",
+        fuel: "120 kWh Battery Pack",
+        weight: "2,060 kg",
+        stock: "1 Unit Allocated",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1200&q=80"],
+        description: "Handmade in Cambiano, Italy. Merges iconic Italian design legacy with future-proof electric hyper-performance."
+      },
+      {
+        id: "v15",
+        brand: "Porsche",
+        model: "911 GT3 RS Carbon Weissach",
+        category: "Supercars",
+        year: 2025,
+        price: 38000000,
+        horsepower: "525 HP",
+        topSpeed: "296 km/h",
+        acceleration: "3.2s (0-100 km/h)",
+        engine: "4.0L Naturally Aspirated Boxer-6",
+        transmission: "7-Speed Porsche Doppelkupplung (PDK)",
+        drivetrain: "Rear-Wheel Drive",
+        fuel: "High-Octane Petrol",
+        weight: "1,450 kg",
+        stock: "Showroom Mint",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80"],
+        description: "The ultimate road-legal track weapon. Active DRS rear wing, individual wheel rebound damper controls, and screaming 9,000 RPM redline."
+      },
+      {
+        id: "v16",
+        brand: "Ferrari",
+        model: "Purosangue V12",
+        category: "SUVs",
+        year: 2025,
+        price: 49000000,
+        horsepower: "725 HP",
+        topSpeed: "310 km/h",
+        acceleration: "3.3s (0-100 km/h)",
+        engine: "6.5L Naturally Aspirated V12",
+        transmission: "8-Speed Dual-Clutch",
+        drivetrain: "4RM-S EVO All-Wheel Drive",
+        fuel: "Petrol",
+        weight: "2,033 kg",
+        stock: "VIP Reserved",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80"],
+        description: "Ferrari's first-ever four-door four-seater. Driven by a legendary naturally aspirated V12 with rear-hinged welcome doors."
+      },
+      {
+        id: "v17",
+        brand: "Bentley",
+        model: "Continental GT Speed Convertible",
+        category: "Luxury",
+        year: 2026,
+        price: 34000000,
+        horsepower: "771 HP",
+        topSpeed: "335 km/h",
+        acceleration: "3.2s (0-100 km/h)",
+        engine: "4.0L Ultra Performance Hybrid V8",
+        transmission: "8-Speed Dual-Clutch",
+        drivetrain: "Active All-Wheel Drive",
+        fuel: "PHEV",
+        weight: "2,450 kg",
+        stock: "In Stock",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"],
+        description: "Effortless grand touring redefined with 1,000 Nm of total system torque and hand-stitched leather hide upholstery."
+      },
+      {
+        id: "v18",
+        brand: "Lotus",
+        model: "Evija Fittipaldi Edition",
+        category: "Electric",
+        year: 2025,
+        price: 150000000,
+        horsepower: "2,011 HP",
+        topSpeed: "350 km/h",
+        acceleration: "2.8s (0-100 km/h)",
+        engine: "4 Motor Electric All-Wheel Drive",
+        transmission: "Single-Speed Epicyclic Gearboxes",
+        drivetrain: "Torque Vectoring AWD",
+        fuel: "93 kWh Battery",
+        weight: "1,680 kg",
+        stock: "1 of 8 Worldwide",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80"],
+        description: "Commemorating Emerson Fittipaldi's 1972 F1 championship. Finished in iconic hand-painted black and gold livery with rotary switch machined from original F1 aluminum."
+      },
+      {
+        id: "v19",
+        brand: "Mercedes-AMG",
+        model: "ONE Hypercar Formula 1 Tech",
+        category: "Hypercars",
+        year: 2025,
+        price: 175000000,
+        horsepower: "1,063 HP",
+        topSpeed: "352 km/h",
+        acceleration: "2.9s (0-100 km/h)",
+        engine: "1.6L Direct Injection Turbo V6 (F1 E-Turbo) + 4 Electric Motors",
+        transmission: "7-Speed Automated Manual",
+        drivetrain: "AMG Performance 4MATIC+",
+        fuel: "Hybrid High-Octane",
+        weight: "1,695 kg",
+        stock: "Collector Handover",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80"],
+        description: "Direct transfer of Formula 1 hybrid powertrain onto public roads. Revs to an astonishing 11,000 RPM with active dynamic chassis louvers."
+      },
+      {
+        id: "v20",
+        brand: "Range Rover",
+        model: "SV Bespoke Edition One",
+        category: "SUVs",
+        year: 2026,
+        price: 28000000,
+        horsepower: "626 HP",
+        topSpeed: "290 km/h",
+        acceleration: "3.6s (0-100 km/h)",
+        engine: "4.4L Twin-Turbo Mild-Hybrid V8",
+        transmission: "8-Speed Automatic",
+        drivetrain: "All-Wheel Drive with All-Wheel Steering",
+        fuel: "Mild Hybrid Petrol",
+        weight: "2,560 kg",
+        stock: "Ready for Delivery",
+        featured: false,
+        image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80",
+        gallery: ["https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80"],
+        description: "Exquisite ceramic controls, semi-aniline leather suite, and integrated active noise canceling headrest speakers for absolute sanctuary."
+      }
+    ];
+
+    // Generate 50 Realistic Parts & Accessories
+    const PARTS_CATEGORIES = ["Wheels", "Exhaust Systems", "Aerodynamics", "Brakes & Suspension", "Interior Bespoke"];
+    const PARTS_DATA = [];
+
+    PARTS_CATEGORIES.forEach((cat, index) => {
+      for (let i = 1; i <= 10; i++) {
+        const pId = p_${cat.toLowerCase().substring(0, 3)}_${i};
+        let pName = "";
+        let price = 0;
+        let desc = "";
+        let img = "";
+
+        if (cat === "Wheels") {
+          pName = DE'LORA Forged Gold-Carbon Rim Set ${20+i}";
+          price = 850000 + (i * 90000);
+          desc = "Aerospace grade forged monoblock aluminum paired with titanium lug bolts and real gold leaf weave.";
+          img = "https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=600&q=80";
+        } else if (cat === "Exhaust Systems") {
+          pName = Titanium Inconel Race Exhaust Stage ${i};
+          price = 650000 + (i * 75000);
+          desc = "Hand-welded formula-grade Inconel exhaust system. Unlocks raw harmonic frequency and drops 18kg weight.";
+          img = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80";
+        } else if (cat === "Aerodynamics") {
+          pName = Bespoke Dry Carbon Aero Pack V${i};
+          price = 1200000 + (i * 110000);
+          desc = "Autoclave dry carbon fiber front splitter, active rear diffuser, and side skirts tuned in Pininfarina wind tunnels.";
+          img = "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80";
+        } else if (cat === "Brakes & Suspension") {
+          pName = Carbon-Matrix Ceramic Brake System Spec ${i};
+          price = 950000 + (i * 85000);
+          desc = "420mm rotor discs paired with 10-piston monoblock titanium calipers for fade-free racetrack stopping force.";
+          img = "https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=600&q=80";
+        } else {
+          pName = Bespoke Alcantara & Gold Thread Interior Suite Class ${i};
+          price = 1500000 + (i * 150000);
+          desc = "Complete re-trim using ultra-soft Nappa leather, diamond gold stitching, and solid brass control knobs.";
+          img = "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=600&q=80";
+        }
+
+        PARTS_DATA.push({
+          id: pId,
+          name: pName,
+          category: cat,
+          price: price,
+          description: desc,
+          rating: (4.8 + (i % 3) * 0.1).toFixed(1),
+          reviewsCount: 12 + i * 3,
+          stock: ${5 + i} Kits Remaining,
+          image: img
+        });
+      }
+    });
+
+    // Gallery High-Res Photography Dataset
+    const GALLERY_DATA = [
+      { id: 'g1', category: 'Hypercars', title: 'Bugatti Horizon', img: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g2', category: 'Supercars', title: 'Ferrari Monza Velocity', img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g3', category: 'Luxury', title: 'Phantom Starlight Lounge', img: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g4', category: 'Electric', title: 'Rimac Quad-Motor Power', img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g5', category: 'Track', title: 'Porsche GT3 RS Apex Sweep', img: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g6', category: 'Engineering', title: 'Exposed Titanium Linkage', img: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g7', category: 'Interior', title: 'Hand-Crafted Nappa Suite', img: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80' },
+      { id: 'g8', category: 'Showroom', title: 'DE\'LORA Vault Sanctum', img: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80' }
+    ];
+
+    /* ==========================================================================
+       2. STATE MANAGEMENT & LOCALSTORAGE PERSISTENCE
+       ========================================================================== */
+    const STATE = {
+      currentUser: null,
+      cart: [],
+      wishlist: [],
+      compareList: [],
+      orders: [],
+      recentlyViewed: [],
+      activePage: 'home',
+      activeFilter: 'All',
+      searchQuery: '',
+      sortOption: 'default',
+      pendingAction: null // Holds callback if login was triggered mid-flow
+    };
+
+    function loadStateFromStorage() {
+      try {
+        const user = localStorage.getItem('delora_user');
+        if (user) STATE.currentUser = JSON.parse(user);
+
+        const cart = localStorage.getItem('delora_cart');
+        if (cart) STATE.cart = JSON.parse(cart);
+
+        const wish = localStorage.getItem('delora_wishlist');
+        if (wish) STATE.wishlist = JSON.parse(wish);
+
+        const cmp = localStorage.getItem('delora_compare');
+        if (cmp) STATE.compareList = JSON.parse(cmp);
+
+        const ord = localStorage.getItem('delora_orders');
+        if (ord) STATE.orders = JSON.parse(ord);
+
+        const rvw = localStorage.getItem('delora_viewed');
+        if (rvw) STATE.recentlyViewed = JSON.parse(rvw);
+      } catch (e) {
+        console.warn("LocalStorage state warning:", e);
+      }
+    }
+
+    function saveStateToStorage(key, value) {
+      try {
+        localStorage.setItem(delora_${key}, JSON.stringify(value));
+      } catch (e) {
+        console.warn("Storage save error:", e);
+      }
+    }
+
+    /* Helper: Format PHP Currency */
+    function formatPHP(amount) {
+      return '₱' + Number(amount).toLocaleString('en-PH');
+    }
+
+    /* ==========================================================================
+       3. TOAST NOTIFICATIONS SYSTEM
+       ========================================================================== */
+    function showToast(message, type = 'gold') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast glass-card px-4 py-3 rounded-lg border-l-4 shadow-xl flex items-center gap-3 text-xs sm:text-sm font-medium ${
+        type === 'gold' ? 'border-gold text-gold-light' : 'border-green-500 text-white'
+      }`;
+      
+      const icon = type === 'gold' ? '👑' : '✓';
+      toast.innerHTML = <span class="text-base">${icon}</span> <span>${message}</span>;
+      
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    /* ==========================================================================
+       4. AUTHENTICATION & PROTECTED FLOWS
+       ========================================================================== */
+    function renderAuthHeader() {
+      const container = document.getElementById('auth-header-container');
+      if (STATE.currentUser) {
+        container.innerHTML = `
+          <div class="relative group py-2">
+            <button class="flex items-center gap-2 text-xs font-semibold text-gold border border-gold/30 rounded-full px-3 py-1.5 hover:bg-gold/10 transition-colors">
+              <i class="fa-solid fa-user-gear"></i>
+              <span class="max-w-[100px] truncate">${STATE.currentUser.name}</span>
+            </button>
+            <div class="absolute right-0 top-full w-48 glass-card rounded-md py-2 hidden group-hover:block shadow-2xl border-gold/30 text-xs">
+              <div class="px-4 py-2 border-b border-gray-800">
+                <p class="text-gold font-bold">${STATE.currentUser.name}</p>
+                <p class="text-gray-400 text-[10px] truncate">${STATE.currentUser.email}</p>
+              </div>
+              <a href="javascript:void(0)" onclick="navigateTo('garage')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold">My Garage (${STATE.wishlist.length})</a>
+              <a href="javascript:void(0)" onclick="navigateTo('orders')" class="block px-4 py-2 hover:bg-gold/10 hover:text-gold">My Orders (${STATE.orders.length})</a>
+              <button onclick="logoutUser()" class="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 transition-colors border-t border-gray-800 mt-1">Sign Out</button>
+            </div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <button onclick="openAuthModal()" class="bg-gold/10 border border-gold/40 hover:bg-gold hover:text-obsidian text-gold text-xs font-semibold uppercase tracking-wider px-3 py-1.5 sm:px-4 sm:py-2 rounded transition-all">
+            Sign In
+          </button>
+        `;
+      }
+    }
+
+    function protectedAction(actionCallback) {
+      if (STATE.currentUser) {
+        actionCallback();
+      } else {
+        STATE.pendingAction = actionCallback;
+        openAuthModal("Sign in required to perform this client action.");
+      }
+    }
+
+    function openAuthModal(msg = "Sign in required to access private garage features") {
+      document.getElementById('auth-subtitle').innerText = msg;
+      const modal = document.getElementById('auth-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.add('opacity-100'), 10);
+      document.body.classList.add('modal-open');
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('auth-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }, 300);
+    }
+
+    function switchAuthTab(tab) {
+      const loginForm = document.getElementById('login-form');
+      const regForm = document.getElementById('register-form');
+      const loginBtn = document.getElementById('tab-login-btn');
+      const regBtn = document.getElementById('tab-register-btn');
+
+      if (tab === 'login') {
+        loginForm.classList.remove('hidden');
+        regForm.classList.add('hidden');
+        loginBtn.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-gold text-gold";
+        regBtn.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-white";
+      } else {
+        loginForm.classList.add('hidden');
+        regForm.classList.remove('hidden');
+        regBtn.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-gold text-gold";
+        loginBtn.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-white";
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value || "client@delora.com";
+      const user = { name: email.split('@')[0].toUpperCase(), email: email };
+      
+      STATE.currentUser = user;
+      saveStateToStorage('user', user);
+      renderAuthHeader();
+      closeAuthModal();
+      showToast(Welcome back, ${user.name});
+
+      if (STATE.pendingAction) {
+        const action = STATE.pendingAction;
+        STATE.pendingAction = null;
+        action();
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const user = { name: name, email: email };
+
+      STATE.currentUser = user;
+      saveStateToStorage('user', user);
+      renderAuthHeader();
+      closeAuthModal();
+      showToast(Welcome to DE'LORA Automotive Group, ${name});
+
+      if (STATE.pendingAction) {
+        const action = STATE.pendingAction;
+        STATE.pendingAction = null;
+        action();
+      }
+    }
+
+    function logoutUser() {
+      STATE.currentUser = null;
+      localStorage.removeItem('delora_user');
+      renderAuthHeader();
+      showToast("Signed out successfully");
+      navigateTo('home');
+    }
+
+    /* ==========================================================================
+       5. SPA NAVIGATION & SECTIONS RENDERING
+       ========================================================================== */
+    function navigateTo(pageId) {
+      STATE.activePage = pageId;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const main = document.getElementById('main-content');
+
+      // Update Nav highlighting
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-gold', 'border-b-2', 'border-gold');
+      });
+
+      switch (pageId) {
+        case 'home':
+        case 'showroom':
+          renderShowroomPage(main);
+          break;
+        case 'parts':
+          renderPartsPage(main);
+          break;
+        case 'gallery':
+          renderGalleryPage(main);
+          break;
+        case 'compare':
+          renderComparePage(main);
+          break;
+        case 'financing':
+          renderFinancingPage(main);
+          break;
+        case 'services':
+          renderServicesPage(main);
+          break;
+        case 'garage':
+          renderGaragePage(main);
+          break;
+        case 'orders':
+          renderOrdersPage(main);
+          break;
+        case 'about':
+          renderAboutPage(main);
+          break;
+        case 'contact':
+          renderContactPage(main);
+          break;
+        default:
+          renderShowroomPage(main);
+      }
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const isHidden = drawer.classList.contains('translate-x-full');
+
+      if (isHidden) {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.add('opacity-100'), 10);
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+    }
+
+    function mobileNav(page) {
+      toggleMobileMenu();
+      if (page === 'garage' || page === 'orders') {
+        protectedAction(() => navigateTo(page));
+      } else {
+        navigateTo(page);
+      }
+    }
+
+    /* ==========================================================================
+       6. SHOWROOM & HERO COMPONENT
+       ========================================================================== */
+    function renderShowroomPage(container) {
+      container.innerHTML = `
+        <!-- HERO SECTION -->
+        <section class="relative h-[85vh] sm:h-[90vh] w-full overflow-hidden flex items-center justify-center border-b border-gold/20">
+          <!-- Ken Burns Background -->
+          <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=2000&q=90" alt="Hero Hypercar" class="w-full h-full object-cover object-center animate-kenburns opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-obsidian via-transparent to-obsidian opacity-80"></div>
+          </div>
+
+          <!-- Hero Content Overlay -->
+          <div class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/40 bg-obsidian/80 backdrop-blur-md mb-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">DE'LORA AUTOMOTIVE GROUP</span>
+            </div>
+            
+            <h1 class="font-cinzel hero-title font-extrabold text-white tracking-wider leading-none">
+              DRIVEN BY <span class="gold-gradient-text">EXCELLENCE</span>
+            </h1>
+
+            <p class="font-sans text-xs sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+              The world's most extraordinary hypercars and bespoke luxury automobiles, meticulously curated for individuals who demand unprecedented mastery.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <button onclick="scrollToSearch()" class="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold px-8 py-3.5 rounded text-xs uppercase tracking-widest transition-all shadow-xl shadow-gold/20 flex items-center justify-center gap-2">
+                <span>Explore Collection</span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </button>
+              <button onclick="filterCategory('Hypercars')" class="w-full sm:w-auto glass-card hover:bg-gold/10 text-white font-semibold px-8 py-3.5 rounded text-xs uppercase tracking-widest border border-gold/30 transition-all">
+                Hypercar Vault
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom Floating Specs Ticker -->
+          <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden md:flex items-center gap-8 glass-card px-8 py-3 rounded-full border border-gold/20 text-xs">
+            <div class="flex items-center gap-2"><span class="text-gold font-mono font-bold">1,800 HP</span> <span class="text-gray-400">V16 Peak Power</span></div>
+            <div class="w-px h-4 bg-gold/20"></div>
+            <div class="flex items-center gap-2"><span class="text-gold font-mono font-bold">530 KM/H</span> <span class="text-gray-400">Velocity Limit</span></div>
+            <div class="w-px h-4 bg-gold/20"></div>
+            <div class="flex items-center gap-2"><span class="text-gold font-mono font-bold">1.74s</span> <span class="text-gray-400">0-100 acceleration</span></div>
+          </div>
+        </section>
+
+        <!-- SEARCH & Dynamic VEHICLE FILTER SECTION -->
+        <section id="showroom-grid-section" class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 pt-16">
+          
+          <!-- Search Control Bar -->
+          <div class="glass-card rounded-xl p-4 sm:p-6 mb-10 border border-gold/20 shadow-2xl">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+              
+              <!-- Search Bar Input -->
+              <div class="relative w-full lg:w-96">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gold"></i>
+                <input type="text" id="vehicle-search-input" value="${STATE.searchQuery}" oninput="handleSearch(this.value)" placeholder="Search Brand, Model, V16, Electric..." class="w-full bg-obsidian/90 border border-gray-700 focus:border-gold rounded-lg pl-11 pr-4 py-3 text-sm text-white focus:outline-none">
+              </div>
+
+              <!-- Category Filter Buttons (Horizontal Scrollable on Mobile) -->
+              <div class="flex items-center gap-2 overflow-x-auto w-full lg:w-auto no-scrollbar pb-2 lg:pb-0">
+                ${['All', 'Hypercars', 'Supercars', 'Luxury', 'Electric', 'SUVs'].map(cat => `
+                  <button onclick="filterCategory('${cat}')" class="px-4 py-2 rounded-lg text-xs uppercase font-semibold whitespace-nowrap transition-all ${
+                    STATE.activeFilter === cat ? 'bg-gold text-obsidian font-bold shadow-md shadow-gold/20' : 'bg-obsidian/80 text-gray-300 hover:text-gold border border-gray-800'
+                  }">${cat}</button>
+                `).join('')}
+              </div>
+
+              <!-- Sort Dropdown -->
+              <div class="w-full lg:w-auto flex items-center justify-end">
+                <select onchange="handleSort(this.value)" class="bg-obsidian/90 border border-gray-700 text-xs text-gold rounded-lg px-3 py-3 focus:outline-none focus:border-gold w-full lg:w-auto">
+                  <option value="default" ${STATE.sortOption === 'default' ? 'selected' : ''}>Sort by: Curated Default</option>
+                  <option value="price-asc" ${STATE.sortOption === 'price-asc' ? 'selected' : ''}>Price: Low to High</option>
+                  <option value="price-desc" ${STATE.sortOption === 'price-desc' ? 'selected' : ''}>Price: High to Low</option>
+                  <option value="hp-desc" ${STATE.sortOption === 'hp-desc' ? 'selected' : ''}>Horsepower: Highest First</option>
+                  <option value="speed-desc" ${STATE.sortOption === 'speed-desc' ? 'selected' : ''}>Top Speed: Fastest</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section Title -->
+          <div class="flex items-center justify-between mb-8 border-b border-gold/20 pb-4">
+            <div>
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">DE'LORA SHOWROOM COLLECTION</span>
+              <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white mt-1">Extraordinary Vehicles</h2>
+            </div>
+            <span id="vehicle-count-badge" class="text-xs font-mono bg-gold/10 border border-gold/30 text-gold px-3 py-1 rounded-full">
+              Showing ${getFilteredVehicles().length} Models
+            </span>
+          </div>
+
+          <!-- VEHICLES GRID -->
+          <div id="vehicles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+      `;
+
+      renderVehiclesGrid();
+    }
+
+    function getFilteredVehicles() {
+      let result = [...VEHICLES_DATA];
+
+      // Filter Category
+      if (STATE.activeFilter !== 'All') {
+        result = result.filter(v => v.category.toLowerCase() === STATE.activeFilter.toLowerCase());
+      }
+
+      // Search
+      if (STATE.searchQuery.trim() !== '') {
+        const q = STATE.searchQuery.toLowerCase();
+        result = result.filter(v => 
+          v.brand.toLowerCase().includes(q) || 
+          v.model.toLowerCase().includes(q) || 
+          v.category.toLowerCase().includes(q) ||
+          v.engine.toLowerCase().includes(q)
+        );
+      }
+
+      // Sort
+      if (STATE.sortOption === 'price-asc') {
+        result.sort((a, b) => a.price - b.price);
+      } else if (STATE.sortOption === 'price-desc') {
+        result.sort((a, b) => b.price - a.price);
+      } else if (STATE.sortOption === 'hp-desc') {
+        result.sort((a, b) => parseInt(b.horsepower) - parseInt(a.horsepower));
+      } else if (STATE.sortOption === 'speed-desc') {
+        result.sort((a, b) => parseInt(b.topSpeed) - parseInt(a.topSpeed));
+      }
+
+      return result;
+    }
+
+    function renderVehiclesGrid() {
+      const grid = document.getElementById('vehicles-grid');
+      if (!grid) return;
+
+      const vehicles = getFilteredVehicles();
+
+      if (vehicles.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-20 text-center glass-card rounded-xl border border-gray-800">
+            <i class="fa-solid fa-car-side text-4xl text-gold/40 mb-3"></i>
+            <h3 class="font-cinzel text-xl text-white">No Matching Automobiles Found</h3>
+            <p class="text-xs text-gray-400 mt-1">Try resetting your search query or selecting another category.</p>
+            <button onclick="resetFilters()" class="mt-4 bg-gold/10 border border-gold/40 text-gold text-xs px-4 py-2 rounded hover:bg-gold hover:text-obsidian transition-colors">
+              Reset Filters
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = vehicles.map(v => {
+        const isWishlisted = STATE.wishlist.some(w => w.id === v.id);
+        const isCompared = STATE.compareList.some(c => c.id === v.id);
+
+        return `
+          <div class="glass-card rounded-xl overflow-hidden gold-glow-hover flex flex-col justify-between group relative border border-gold/15">
+            
+            <!-- Badges & Wishlist Button -->
+            <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between">
+              <span class="bg-obsidian/80 border border-gold/30 text-gold text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                ${v.category}
+              </span>
+              <button onclick="toggleWishlist('${v.id}')" class="w-8 h-8 rounded-full glass-card border border-gold/30 flex items-center justify-center text-sm transition-transform active:scale-90 ${
+                isWishlisted ? 'text-red-500 bg-red-500/10' : 'text-gray-300 hover:text-gold'
+              }">
+                <i class="fa-${isWishlisted ? 'solid' : 'regular'} fa-heart"></i>
+              </button>
+            </div>
+
+            <!-- Image Container -->
+            <div class="relative h-48 sm:h-56 overflow-hidden bg-obsidian cursor-pointer" onclick="openProductModal('${v.id}')">
+              <img src="${v.image}" alt="${v.brand} ${v.model}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80'">
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-80"></div>
+              <div class="absolute bottom-2 left-3 text-[10px] text-gray-400 font-mono">
+                ${v.year} • ${v.stock}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-4">
+              <div>
+                <span class="text-gold text-xs uppercase tracking-widest font-semibold">${v.brand}</span>
+                <h3 onclick="openProductModal('${v.id}')" class="font-cinzel text-lg font-bold text-white group-hover:text-gold transition-colors cursor-pointer line-clamp-1">
+                  ${v.model}
+                </h3>
+                <p class="font-mono text-base font-bold text-gold-light mt-1">${formatPHP(v.price)}</p>
+              </div>
+
+              <!-- Quick Specs Grid -->
+              <div class="grid grid-cols-3 gap-2 py-2 border-y border-gray-800 text-[11px] text-center">
+                <div>
+                  <span class="block text-gray-400 text-[9px] uppercase">Power</span>
+                  <span class="font-semibold text-white">${v.horsepower}</span>
+                </div>
+                <div class="border-x border-gray-800">
+                  <span class="block text-gray-400 text-[9px] uppercase">Top Speed</span>
+                  <span class="font-semibold text-white">${v.topSpeed}</span>
+                </div>
+                <div>
+                  <span class="block text-gray-400 text-[9px] uppercase">0-100 km/h</span>
+                  <span class="font-semibold text-white">${v.acceleration.split(' ')[0]}</span>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex items-center gap-2 pt-1">
+                <button onclick="openProductModal('${v.id}')" class="flex-1 bg-obsidian hover:bg-gold/10 border border-gold/30 text-white hover:text-gold text-xs font-semibold py-2.5 rounded transition-colors text-center">
+                  Details
+                </button>
+                <button onclick="protectedAction(() => addToCart('${v.id}', 'vehicle'))" class="flex-1 bg-gold hover:bg-gold-light text-obsidian text-xs font-bold py-2.5 rounded transition-colors shadow-md shadow-gold/20 text-center">
+                  Add to Garage
+                </button>
+                <button onclick="toggleCompare('${v.id}')" class="w-9 h-9 flex items-center justify-center border border-gray-700 rounded hover:border-gold ${
+                  isCompared ? 'bg-gold/20 text-gold border-gold' : 'text-gray-400'
+                }" title="Compare Vehicle">
+                  <i class="fa-solid fa-code-compare text-xs"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function scrollToSearch() {
+      const el = document.getElementById('showroom-grid-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSearch(val) {
+      STATE.searchQuery = val;
+      renderVehiclesGrid();
+    }
+
+    function filterCategory(cat) {
+      STATE.activeFilter = cat;
+      if (STATE.activePage !== 'home' && STATE.activePage !== 'showroom') {
+        navigateTo('showroom');
+      } else {
+        renderShowroomPage(document.getElementById('main-content'));
+      }
+    }
+
+    function handleSort(val) {
+      STATE.sortOption = val;
+      renderVehiclesGrid();
+    }
+
+    function resetFilters() {
+      STATE.searchQuery = '';
+      STATE.activeFilter = 'All';
+      STATE.sortOption = 'default';
+      renderShowroomPage(document.getElementById('main-content'));
+    }
+
+    /* ==========================================================================
+       7. PRODUCT DETAILS MODAL (High-End Vehicle View)
+       ========================================================================== */
+    function openProductModal(vehicleId) {
+      const vehicle = VEHICLES_DATA.find(v => v.id === vehicleId);
+      if (!vehicle) return;
+
+      // Track recently viewed
+      if (!STATE.recentlyViewed.some(r => r.id === vehicle.id)) {
+        STATE.recentlyViewed.unshift(vehicle);
+        if (STATE.recentlyViewed.length > 6) STATE.recentlyViewed.pop();
+        saveStateToStorage('viewed', STATE.recentlyViewed);
+      }
+
+      const modal = document.getElementById('product-modal');
+      const container = document.getElementById('product-modal-content');
+
+      container.innerHTML = `
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 z-20 text-gray-400 hover:text-white text-2xl w-10 h-10 rounded-full glass-card flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Left: Gallery Viewer -->
+          <div class="space-y-4">
+            <div class="relative h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden border border-gold/30 bg-obsidian">
+              <img id="modal-main-img" src="${vehicle.image}" alt="${vehicle.model}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+              ${vehicle.gallery.map(imgUrl => `
+                <button onclick="document.getElementById('modal-main-img').src='${imgUrl}'" class="w-20 h-16 rounded-lg overflow-hidden border border-gray-700 focus:border-gold flex-shrink-0">
+                  <img src="${imgUrl}" class="w-full h-full object-cover">
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Right: Vehicle Details & Order -->
+          <div class="space-y-6">
+            <div>
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">${vehicle.brand} • ${vehicle.category}</span>
+              <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white mt-1">${vehicle.model}</h2>
+              <p class="font-mono text-2xl font-bold text-gold mt-2">${formatPHP(vehicle.price)}</p>
+              <p class="text-xs text-gray-400 mt-1"><i class="fa-solid fa-shield-halved text-gold mr-1"></i> Factory Authenticated • Includes 5-Year Global White-Glove Support</p>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">${vehicle.description}</p>
+
+            <!-- Technical Specifications Table -->
+            <div class="bg-obsidian/80 border border-gray-800 rounded-lg p-4 space-y-2 text-xs">
+              <h4 class="font-cinzel text-white font-semibold text-sm border-b border-gold/20 pb-2 mb-3">Mechanical Specifications</h4>
+              <div class="grid grid-cols-2 gap-2">
+                <div><span class="text-gray-400">Powertrain:</span> <span class="text-white font-medium block truncate">${vehicle.engine}</span></div>
+                <div><span class="text-gray-400">Horsepower:</span> <span class="text-gold font-mono font-bold block">${vehicle.horsepower}</span></div>
+                <div><span class="text-gray-400">Transmission:</span> <span class="text-white font-medium block truncate">${vehicle.transmission}</span></div>
+                <div><span class="text-gray-400">Top Speed:</span> <span class="text-gold font-mono font-bold block">${vehicle.topSpeed}</span></div>
+                <div><span class="text-gray-400">Drivetrain:</span> <span class="text-white font-medium block">${vehicle.drivetrain}</span></div>
+                <div><span class="text-gray-400">Curp Weight:</span> <span class="text-white font-medium block">${vehicle.weight}</span></div>
+              </div>
+            </div>
+
+            <!-- Customer Experience Review snippet -->
+            <div class="border-t border-gray-800 pt-4 text-xs">
+              <div class="flex items-center gap-1 text-gold mb-1">
+                ★★★★★ <span class="text-white font-semibold ml-2">5.0 VIP Rating</span>
+              </div>
+              <p class="text-gray-400 italic">"The engineering craftsmanship exceeds every expectation. Delivery to our Geneva private hangar was flawless."</p>
+              <p class="text-gray-500 text-[10px] mt-1">— Lord Harrison V., Certified Owner</p>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button onclick="protectedAction(() => { addToCart('${vehicle.id}', 'vehicle'); closeModal(); toggleCartDrawer(); })" class="flex-1 bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 rounded text-xs uppercase tracking-wider transition-colors shadow-lg shadow-gold/20 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-cart-plus"></i>
+                <span>Acquire Vehicle</span>
+              </button>
+              <button onclick="toggleWishlist('${vehicle.id}')" class="px-5 border border-gold/40 hover:bg-gold/10 text-gold font-semibold py-3.5 rounded text-xs uppercase transition-colors flex items-center justify-center gap-2">
+                <i class="fa-regular fa-heart"></i>
+                <span>Save to Garage</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.add('opacity-100'), 10);
+      document.body.classList.add('modal-open');
+    }
+
+    function closeProductModal() {
+      const modal = document.getElementById('product-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }, 300);
+    }
+
+    /* ==========================================================================
+       8. PARTS & TUNING MARKETPLACE
+       ========================================================================== */
+    function renderPartsPage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+          
+          <!-- Banner -->
+          <div class="relative rounded-2xl overflow-hidden border border-gold/30 p-8 sm:p-12 mb-12 bg-charcoal">
+            <div class="relative z-10 max-w-xl space-y-4">
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">BESPOKE PERFORMANCE & TUNING</span>
+              <h1 class="font-cinzel text-3xl sm:text-4xl font-bold text-white">DE'LORA PERFORMANCE PARTS</h1>
+              <p class="text-xs sm:text-sm text-gray-300 font-light">Elevate your supercar with factory-grade titanium exhausts, forged gold-carbon wheels, and aerodynamic packages calibrated in wind tunnels.</p>
+            </div>
+          </div>
+
+          <!-- Parts Categories Tabs -->
+          <div class="flex items-center gap-3 overflow-x-auto pb-4 mb-8 no-scrollbar">
+            <button onclick="filterParts('All')" class="px-5 py-2.5 rounded-lg text-xs font-semibold uppercase whitespace-nowrap bg-gold text-obsidian shadow-lg shadow-gold/20">All Accessories (50)</button>
+            ${PARTS_CATEGORIES.map(cat => `
+              <button onclick="filterParts('${cat}')" class="px-5 py-2.5 rounded-lg text-xs font-semibold uppercase whitespace-nowrap glass-card hover:text-gold border border-gold/20">${cat}</button>
+            `).join('')}
+          </div>
+
+          <!-- Parts Grid -->
+          <div id="parts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Dynamically Rendered -->
+          </div>
+        </section>
+      `;
+
+      renderPartsGrid(PARTS_DATA);
+    }
+
+    function filterParts(cat) {
+      if (cat === 'All') {
+        renderPartsGrid(PARTS_DATA);
+      } else {
+        renderPartsGrid(PARTS_DATA.filter(p => p.category === cat));
+      }
+    }
+
+    function renderPartsGrid(items) {
+      const grid = document.getElementById('parts-grid');
+      if (!grid) return;
+
+      grid.innerHTML = items.map(p => `
+        <div class="glass-card rounded-xl overflow-hidden gold-glow-hover flex flex-col justify-between border border-gold/15">
+          <div class="relative h-44 overflow-hidden bg-obsidian">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+            <span class="absolute top-3 left-3 bg-obsidian/80 border border-gold/30 text-gold text-[10px] font-semibold px-2 py-0.5 rounded">
+              ${p.category}
+            </span>
+          </div>
+
+          <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between text-xs text-gold mb-1">
+                <span>★ ${p.rating}</span>
+                <span class="text-gray-400 text-[10px]">${p.stock}</span>
+              </div>
+              <h3 class="font-cinzel text-base font-bold text-white line-clamp-1">${p.name}</h3>
+              <p class="text-xs text-gray-400 line-clamp-2 mt-1 font-light">${p.description}</p>
+            </div>
+
+            <div>
+              <p class="font-mono text-lg font-bold text-gold-light mb-3">${formatPHP(p.price)}</p>
+              <button onclick="protectedAction(() => addToCart('${p.id}', 'part'))" class="w-full bg-gold/10 hover:bg-gold border border-gold/40 text-gold hover:text-obsidian text-xs font-bold py-2.5 rounded transition-all uppercase tracking-wider">
+                Add Part to Order
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       9. SHOPPING BAG & GARAGE CART SYSTEM
+       ========================================================================== */
+    function addToCart(itemId, type = 'vehicle') {
+      let item = null;
+      if (type === 'vehicle') {
+        item = VEHICLES_DATA.find(v => v.id === itemId);
+      } else {
+        item = PARTS_DATA.find(p => p.id === itemId);
+      }
+
+      if (!item) return;
+
+      const existing = STATE.cart.find(c => c.id === item.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        STATE.cart.push({
+          id: item.id,
+          name: item.model || item.name,
+          brand: item.brand || item.category,
+          price: item.price,
+          image: item.image,
+          qty: 1,
+          type: type
+        });
+      }
+
+      saveStateToStorage('cart', STATE.cart);
+      updateCartBadge();
+      showToast(Added ${item.model || item.name} to Garage Cart);
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const backdrop = document.getElementById('cart-backdrop');
+      const isHidden = drawer.classList.contains('translate-x-full');
+
+      if (isHidden) {
+        renderCartItems();
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.add('opacity-100'), 10);
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cart-badge');
+      const count = STATE.cart.reduce((acc, curr) => acc + curr.qty, 0);
+
+      if (count > 0) {
+        badge.innerText = count;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
+
+      if (STATE.cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 space-y-3">
+            <i class="fa-solid fa-warehouse text-4xl text-gold/30"></i>
+            <p class="text-sm text-gray-300 font-semibold">Your Client Garage is empty</p>
+            <p class="text-xs text-gray-500">Explore the showroom to add automobiles or parts.</p>
+          </div>
+        `;
+        subtotalEl.innerText = formatPHP(0);
+        totalEl.innerText = formatPHP(0);
+        return;
+      }
+
+      let subtotal = 0;
+
+      container.innerHTML = STATE.cart.map(item => {
+        subtotal += item.price * item.qty;
+        return `
+          <div class="glass-card p-3 rounded-lg flex items-center gap-3 border border-gray-800">
+            <img src="${item.image}" class="w-20 h-14 object-cover rounded border border-gold/20">
+            <div class="flex-grow min-w-0">
+              <p class="text-[10px] text-gold uppercase font-semibold truncate">${item.brand}</p>
+              <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
+              <p class="text-xs font-mono text-gold-light mt-0.5">${formatPHP(item.price)}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 rounded bg-obsidian border border-gray-700 text-xs text-white flex items-center justify-center hover:border-gold">-</button>
+              <span class="text-xs font-mono text-white font-bold">${item.qty}</span>
+              <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 rounded bg-obsidian border border-gray-700 text-xs text-white flex items-center justify-center hover:border-gold">+</button>
+              <button onclick="removeFromCart('${item.id}')" class="text-gray-500 hover:text-red-400 text-xs ml-1">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const deliveryFee = 250000;
+      subtotalEl.innerText = formatPHP(subtotal);
+      totalEl.innerText = formatPHP(subtotal + deliveryFee);
+    }
+
+    function updateCartQty(id, delta) {
+      const item = STATE.cart.find(c => c.id === id);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        STATE.cart = STATE.cart.filter(c => c.id !== id);
+      }
+
+      saveStateToStorage('cart', STATE.cart);
+      updateCartBadge();
+      renderCartItems();
+    }
+
+    function removeFromCart(id) {
+      STATE.cart = STATE.cart.filter(c => c.id !== id);
+      saveStateToStorage('cart', STATE.cart);
+      updateCartBadge();
+      renderCartItems();
+      showToast("Item removed from garage");
+    }
+
+    /* ==========================================================================
+       10. CHECKOUT & ORDER HISTORY
+       ========================================================================== */
+    function openCheckoutModal() {
+      if (STATE.cart.length === 0) {
+        showToast("Your garage cart is empty!");
+        return;
+      }
+
+      protectedAction(() => {
+        toggleCartDrawer();
+
+        const subtotal = STATE.cart.reduce((a, b) => a + (b.price * b.qty), 0);
+        const total = subtotal + 250000;
+
+        document.getElementById('chk-subtotal').innerText = formatPHP(subtotal);
+        document.getElementById('chk-total').innerText = formatPHP(total);
+
+        if (STATE.currentUser) {
+          document.getElementById('chk-name').value = STATE.currentUser.name || '';
+          document.getElementById('chk-email').value = STATE.currentUser.email || '';
+        }
+
+        const modal = document.getElementById('checkout-modal');
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('opacity-100'), 10);
+        document.body.classList.add('modal-open');
+      });
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkout-modal');
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }, 300);
+    }
+
+    function processCheckout(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('chk-name').value;
+      const email = document.getElementById('chk-email').value;
+      const address = document.getElementById('chk-address').value;
+      const payMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+      const subtotal = STATE.cart.reduce((a, b) => a + (b.price * b.qty), 0);
+      const total = subtotal + 250000;
+
+      const orderNumber = DLR-2026-${Math.floor(1000 + Math.random() * 9000)};
+
+      const newOrder = {
+        orderNumber: orderNumber,
+        date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+        items: [...STATE.cart],
+        subtotal: subtotal,
+        total: total,
+        paymentMethod: payMethod,
+        shippingAddress: address,
+        status: 'Order Confirmed'
+      };
+
+      STATE.orders.unshift(newOrder);
+      saveStateToStorage('orders', STATE.orders);
+
+      // Clear cart
+      STATE.cart = [];
+      saveStateToStorage('cart', STATE.cart);
+      updateCartBadge();
+
+      closeCheckoutModal();
+      showToast(Order ${orderNumber} Confirmed! Dispatching Concierge.);
+      navigateTo('orders');
+    }
+
+    function renderOrdersPage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+          <div class="border-b border-gold/20 pb-4 mb-8 flex justify-between items-end">
+            <div>
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">CLIENT SERVICES PORTAL</span>
+              <h1 class="font-cinzel text-3xl font-bold text-white mt-1">My Acquisition History</h1>
+            </div>
+            <button onclick="navigateTo('showroom')" class="text-xs text-gold border border-gold/30 px-3 py-1.5 rounded hover:bg-gold hover:text-obsidian transition-colors">
+              Browse Showroom
+            </button>
+          </div>
+
+          <div id="orders-list-container" class="space-y-8">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+      `;
+
+      const listContainer = document.getElementById('orders-list-container');
+
+      if (STATE.orders.length === 0) {
+        listContainer.innerHTML = `
+          <div class="glass-card rounded-xl p-12 text-center border border-gray-800 space-y-4">
+            <i class="fa-solid fa-box-open text-4xl text-gold/30"></i>
+            <h3 class="font-cinzel text-xl text-white">No Vehicles Acquired Yet</h3>
+            <p class="text-xs text-gray-400">Your acquisition orders and global delivery dispatches will appear here.</p>
+            <button onclick="navigateTo('showroom')" class="bg-gold text-obsidian font-bold text-xs px-6 py-3 rounded uppercase tracking-wider">
+              Explore Collection
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = STATE.orders.map(ord => `
+        <div class="glass-card rounded-xl p-6 border border-gold/30 space-y-6">
+          
+          <!-- Order Header -->
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-gray-800 pb-4">
+            <div>
+              <span class="text-[10px] text-gold uppercase tracking-widest font-mono">ORDER ID: ${ord.orderNumber}</span>
+              <h3 class="text-lg font-bold text-white font-cinzel mt-0.5">Placed on ${ord.date}</h3>
+              <p class="text-xs text-gray-400">Payment: ${ord.paymentMethod} • Deliver to: ${ord.shippingAddress}</p>
+            </div>
+            <div class="text-right">
+              <span class="font-mono text-xl font-bold text-gold-light block">${formatPHP(ord.total)}</span>
+              <span class="inline-block bg-green-500/10 border border-green-500/30 text-green-400 text-[10px] px-2.5 py-0.5 rounded-full uppercase mt-1 font-semibold">
+                ● ${ord.status}
+              </span>
+            </div>
+          </div>
+
+          <!-- Timeline Tracker -->
+          <div class="py-2">
+            <p class="text-xs text-gold uppercase font-semibold mb-4">White-Glove Dispatch Status</p>
+            <div class="grid grid-cols-2 sm:grid-cols-6 gap-2 text-center text-[10px]">
+              <div class="p-2 rounded bg-gold/20 text-gold border border-gold/40">1. Confirmed</div>
+              <div class="p-2 rounded bg-gold/10 text-gold-light border border-gold/20">2. Payment Verified</div>
+              <div class="p-2 rounded bg-obsidian text-gray-400 border border-gray-800">3. Vehicle Prep</div>
+              <div class="p-2 rounded bg-obsidian text-gray-400 border border-gray-800">4. Quality Inspection</div>
+              <div class="p-2 rounded bg-obsidian text-gray-400 border border-gray-800">5. En Route Air/Sea</div>
+              <div class="p-2 rounded bg-obsidian text-gray-400 border border-gray-800">6. Delivered</div>
+            </div>
+          </div>
+
+          <!-- Items in Order -->
+          <div class="space-y-3 border-t border-gray-800 pt-4">
+            <p class="text-xs text-gray-400 uppercase">Acquired Asset List</p>
+            ${ord.items.map(item => `
+              <div class="flex items-center gap-4 bg-obsidian/60 p-3 rounded border border-gray-800">
+                <img src="${item.image}" class="w-16 h-12 object-cover rounded border border-gold/20">
+                <div class="flex-grow">
+                  <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                  <p class="text-[10px] text-gray-400">Qty: ${item.qty} • Unit Price: ${formatPHP(item.price)}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       11. VEHICLE COMPARISON TOOL
+       ========================================================================== */
+    function toggleCompare(id) {
+      const idx = STATE.compareList.findIndex(c => c.id === id);
+      if (idx > -1) {
+        STATE.compareList.splice(idx, 1);
+        showToast("Removed vehicle from comparison");
+      } else {
+        if (STATE.compareList.length >= 4) {
+          showToast("Maximum 4 vehicles allowed for side-by-side comparison");
+          return;
+        }
+        const vehicle = VEHICLES_DATA.find(v => v.id === id);
+        if (vehicle) {
+          STATE.compareList.push(vehicle);
+          showToast(Added ${vehicle.model} to comparison matrix);
+        }
+      }
+      saveStateToStorage('compare', STATE.compareList);
+      renderVehiclesGrid();
+    }
+
+    function renderComparePage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+          <div class="border-b border-gold/20 pb-4 mb-8 flex justify-between items-center">
+            <div>
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">TECHNICAL MATRIX</span>
+              <h1 class="font-cinzel text-3xl font-bold text-white mt-1">Vehicle Spec Comparison</h1>
+            </div>
+            ${STATE.compareList.length > 0 ? `
+              <button onclick="STATE.compareList=[]; saveStateToStorage('compare', []); renderComparePage(document.getElementById('main-content'));" class="text-xs text-red-400 border border-red-500/30 px-3 py-1.5 rounded hover:bg-red-500/10">
+                Clear Matrix
+              </button>
+            ` : ''}
+          </div>
+
+          <div id="compare-matrix-container">
+            <!-- Rendered below -->
+          </div>
+        </section>
+      `;
+
+      const matrix = document.getElementById('compare-matrix-container');
+
+      if (STATE.compareList.length === 0) {
+        matrix.innerHTML = `
+          <div class="glass-card rounded-xl p-16 text-center border border-gray-800 space-y-4">
+            <i class="fa-solid fa-code-compare text-4xl text-gold/30"></i>
+            <h3 class="font-cinzel text-xl text-white">No Automobiles Selected</h3>
+            <p class="text-xs text-gray-400">Click the compare icon on any vehicle card in the showroom to build a side-by-side spec matrix.</p>
+            <button onclick="navigateTo('showroom')" class="bg-gold text-obsidian font-bold text-xs px-6 py-3 rounded uppercase tracking-wider">
+              Browse Showroom
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // Responsive Table / Cards Grid
+      matrix.innerHTML = `
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse min-w-[700px]">
+            <thead>
+              <tr class="border-b border-gold/30">
+                <th class="p-4 bg-charcoal text-gold font-cinzel text-sm">Specification</th>
+                ${STATE.compareList.map(v => `
+                  <th class="p-4 bg-charcoal/80 w-1/4">
+                    <div class="space-y-2">
+                      <img src="${v.image}" class="w-full h-28 object-cover rounded border border-gold/20">
+                      <span class="text-gold uppercase text-[10px] block">${v.brand}</span>
+                      <h4 class="font-cinzel text-sm font-bold text-white">${v.model}</h4>
+                      <p class="font-mono text-gold-light font-bold">${formatPHP(v.price)}</p>
+                      <button onclick="toggleCompare('${v.id}'); renderComparePage(document.getElementById('main-content'));" class="text-[10px] text-red-400 hover:underline">Remove</button>
+                    </div>
+                  </th>
+                `).join('')}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800 text-gray-300">
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Horsepower</td>
+                ${STATE.compareList.map(v => <td class="p-4 font-mono font-bold text-gold">${v.horsepower}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Top Speed</td>
+                ${STATE.compareList.map(v => <td class="p-4 font-mono font-bold text-gold">${v.topSpeed}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">0-100 km/h</td>
+                ${STATE.compareList.map(v => <td class="p-4 font-mono">${v.acceleration}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Engine / Motor</td>
+                ${STATE.compareList.map(v => <td class="p-4">${v.engine}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Transmission</td>
+                ${STATE.compareList.map(v => <td class="p-4">${v.transmission}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Drivetrain</td>
+                ${STATE.compareList.map(v => <td class="p-4">${v.drivetrain}</td>).join('')}
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-white bg-obsidian">Curbside Weight</td>
+                ${STATE.compareList.map(v => <td class="p-4">${v.weight}</td>).join('')}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    /* ==========================================================================
+       12. FINANCING CALCULATOR
+       ========================================================================== */
+    function renderFinancingPage(container) {
+      container.innerHTML = `
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+          <div class="text-center space-y-2 mb-10">
+            <span class="text-gold text-xs uppercase tracking-widest font-semibold">DE'LORA CAPITAL SERVICES</span>
+            <h1 class="font-cinzel text-3xl font-bold text-white">Luxury Vehicle Financing Portal</h1>
+            <p class="text-xs text-gray-400">Calculate tailored acquisition terms with flexible VIP interest rates.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-8 border border-gold/30 shadow-2xl space-y-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- Input: Price -->
+              <div>
+                <label class="block text-xs uppercase text-gray-300 font-semibold mb-2">Automobile Acquisition Price</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gold font-bold">₱</span>
+                  <input type="number" id="fin-price" value="52000000" oninput="calculateFinancing()" class="w-full bg-obsidian border border-gray-700 focus:border-gold rounded pl-8 pr-3 py-3 text-sm text-white font-mono focus:outline-none">
+                </div>
+              </div>
+
+              <!-- Input: Down Payment -->
+              <div>
+                <label class="block text-xs uppercase text-gray-300 font-semibold mb-2">Down Payment Capital</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gold font-bold">₱</span>
+                  <input type="number" id="fin-down" value="10400000" oninput="calculateFinancing()" class="w-full bg-obsidian border border-gray-700 focus:border-gold rounded pl-8 pr-3 py-3 text-sm text-white font-mono focus:outline-none">
+                </div>
+              </div>
+
+              <!-- Input: Term Length -->
+              <div>
+                <label class="block text-xs uppercase text-gray-300 font-semibold mb-2">Loan Term Period</label>
+                <select id="fin-term" onchange="calculateFinancing()" class="w-full bg-obsidian border border-gray-700 focus:border-gold rounded px-3 py-3 text-sm text-white font-mono focus:outline-none">
+                  <option value="36">36 Months (3 Years)</option>
+                  <option value="48">48 Months (4 Years)</option>
+                  <option value="60" selected>60 Months (5 Years)</option>
+                  <option value="72">72 Months (6 Years)</option>
+                </select>
+              </div>
+
+              <!-- Input: Interest Rate -->
+              <div>
+                <label class="block text-xs uppercase text-gray-300 font-semibold mb-2">Annual VIP Interest Rate (%)</label>
+                <input type="number" id="fin-rate" value="4.5" step="0.1" oninput="calculateFinancing()" class="w-full bg-obsidian border border-gray-700 focus:border-gold rounded px-3 py-3 text-sm text-white font-mono focus:outline-none">
+              </div>
+
+            </div>
+
+            <!-- Calculation Output Card -->
+            <div class="bg-obsidian/90 border border-gold/30 rounded-xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+              <div>
+                <span class="text-[10px] text-gray-400 uppercase">Financed Loan Amount</span>
+                <p id="out-loan" class="font-mono text-base font-bold text-white mt-1">₱0</p>
+              </div>
+              <div>
+                <span class="text-[10px] text-gray-400 uppercase">Estimated Monthly Installment</span>
+                <p id="out-monthly" class="font-mono text-xl font-bold text-gold mt-1">₱0</p>
+              </div>
+              <div>
+                <span class="text-[10px] text-gray-400 uppercase">Total Interest Cost</span>
+                <p id="out-interest" class="font-mono text-base font-bold text-white mt-1">₱0</p>
+              </div>
+              <div>
+                <span class="text-[10px] text-gray-400 uppercase">Total Repayment Amount</span>
+                <p id="out-total" class="font-mono text-base font-bold text-gold-light mt-1">₱0</p>
+              </div>
+            </div>
+
+            <button onclick="showToast('Financial pre-approval request submitted to DE\'LORA Private Banking.');" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-4 rounded text-xs uppercase tracking-wider transition-colors shadow-xl shadow-gold/20">
+              Apply for Private VIP Pre-Approval
+            </button>
+
+          </div>
+        </section>
+      `;
+
+      calculateFinancing();
+    }
+
+    function calculateFinancing() {
+      const price = parseFloat(document.getElementById('fin-price')?.value) || 0;
+      const down = parseFloat(document.getElementById('fin-down')?.value) || 0;
+      const months = parseInt(document.getElementById('fin-term')?.value) || 60;
+      const annualRate = parseFloat(document.getElementById('fin-rate')?.value) || 4.5;
+
+      const loan = Math.max(0, price - down);
+      const monthlyRate = (annualRate / 100) / 12;
+
+      let monthlyPayment = 0;
+      if (monthlyRate > 0) {
+        monthlyPayment = (loan * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      } else {
+        monthlyPayment = loan / months;
+      }
+
+      const totalRepayment = monthlyPayment * months;
+      const totalInterest = Math.max(0, totalRepayment - loan);
+
+      if (document.getElementById('out-loan')) {
+        document.getElementById('out-loan').innerText = formatPHP(loan);
+        document.getElementById('out-monthly').innerText = formatPHP(monthlyPayment);
+        document.getElementById('out-interest').innerText = formatPHP(totalInterest);
+        document.getElementById('out-total').innerText = formatPHP(totalRepayment);
+      }
+    }
+
+    /* ==========================================================================
+       13. MEDIA GALLERY
+       ========================================================================== */
+    function renderGalleryPage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 py-12">
+          <div class="text-center space-y-2 mb-10">
+            <span class="text-gold text-xs uppercase tracking-widest font-semibold">AUTOMOTIVE PHOTOGRAPHY</span>
+            <h1 class="font-cinzel text-3xl font-bold text-white">DE'LORA Visual Sanctum</h1>
+            <p class="text-xs text-gray-400">High-definition imagery capturing rare hypercars in full detail.</p>
+          </div>
+
+          <!-- Gallery Filters -->
+          <div class="flex items-center justify-center gap-3 overflow-x-auto pb-4 mb-8 no-scrollbar">
+            <button onclick="renderGalleryGrid('All')" class="px-5 py-2.5 rounded-lg text-xs font-semibold uppercase whitespace-nowrap bg-gold text-obsidian shadow-lg shadow-gold/20">All Photography</button>
+            ${['Hypercars', 'Supercars', 'Luxury', 'Track', 'Engineering'].map(cat => `
+              <button onclick="renderGalleryGrid('${cat}')" class="px-5 py-2.5 rounded-lg text-xs font-semibold uppercase whitespace-nowrap glass-card hover:text-gold border border-gold/20">${cat}</button>
+            `).join('')}
+          </div>
+
+          <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Populated dynamically -->
+          </div>
+        </section>
+      `;
+
+      renderGalleryGrid('All');
+    }
+
+    function renderGalleryGrid(cat) {
+      const grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+
+      const filtered = cat === 'All' ? GALLERY_DATA : GALLERY_DATA.filter(g => g.category === cat);
+
+      grid.innerHTML = filtered.map(g => `
+        <div class="glass-card rounded-xl overflow-hidden group relative h-72 border border-gold/20 cursor-pointer">
+          <img src="${g.img}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="text-gold text-[10px] uppercase tracking-widest block font-semibold">${g.category}</span>
+            <h4 class="font-cinzel text-lg font-bold mt-0.5">${g.title}</h4>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ==========================================================================
+       14. MY GARAGE SECTION
+       ========================================================================== */
+    function toggleWishlist(id) {
+      protectedAction(() => {
+        const vehicle = VEHICLES_DATA.find(v => v.id === id);
+        if (!vehicle) return;
+
+        const idx = STATE.wishlist.findIndex(w => w.id === id);
+        if (idx > -1) {
+          STATE.wishlist.splice(idx, 1);
+          showToast(Removed ${vehicle.model} from Wishlist);
+        } else {
+          STATE.wishlist.push(vehicle);
+          showToast(Saved ${vehicle.model} to My Garage);
+        }
+        saveStateToStorage('wishlist', STATE.wishlist);
+        
+        if (STATE.activePage === 'garage') {
+          renderGaragePage(document.getElementById('main-content'));
+        } else if (STATE.activePage === 'home' || STATE.activePage === 'showroom') {
+          renderVehiclesGrid();
+        }
+      });
+    }
+
+    function renderGaragePage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 py-12 space-y-12">
+          
+          <!-- Header -->
+          <div class="border-b border-gold/20 pb-4 flex justify-between items-end">
+            <div>
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">PRIVATE CLIENT REPOSITORY</span>
+              <h1 class="font-cinzel text-3xl font-bold text-white mt-1">My Garage & Saved Assets</h1>
+            </div>
+          </div>
+
+          <!-- Wishlist Section -->
+          <div>
+            <h3 class="font-cinzel text-xl text-white font-bold mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-heart text-red-500 text-sm"></i> Wishlist Automobiles (${STATE.wishlist.length})
+            </h3>
+            
+            ${STATE.wishlist.length === 0 ? `
+              <div class="glass-card rounded-xl p-8 text-center border border-gray-800 text-gray-400 text-xs">
+                No saved vehicles in your wishlist yet.
+              </div>
+             : 
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                ${STATE.wishlist.map(v => `
+                  <div class="glass-card rounded-xl overflow-hidden border border-gold/20 p-4 space-y-3">
+                    <img src="${v.image}" class="w-full h-40 object-cover rounded border border-gold/10">
+                    <div>
+                      <span class="text-gold text-[10px] uppercase font-semibold">${v.brand}</span>
+                      <h4 class="font-cinzel text-base font-bold text-white">${v.model}</h4>
+                      <p class="font-mono text-sm font-bold text-gold-light mt-1">${formatPHP(v.price)}</p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-2">
+                      <button onclick="openProductModal('${v.id}')" class="flex-1 bg-gold/10 hover:bg-gold text-gold hover:text-obsidian text-xs py-2 rounded transition-colors">
+                        View Spec
+                      </button>
+                      <button onclick="toggleWishlist('${v.id}')" class="text-red-400 p-2 hover:bg-red-500/10 rounded">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+
+          <!-- Recently Viewed Section -->
+          <div>
+            <h3 class="font-cinzel text-xl text-white font-bold mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-gold text-sm"></i> Recently Viewed Automobiles
+            </h3>
+            ${STATE.recentlyViewed.length === 0 ? `
+              <p class="text-xs text-gray-500">Your recently viewed vehicles will appear here.</p>
+             : 
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                ${STATE.recentlyViewed.map(v => `
+                  <div class="glass-card rounded-xl p-4 border border-gray-800 space-y-2 cursor-pointer" onclick="openProductModal('${v.id}')">
+                    <img src="${v.image}" class="w-full h-32 object-cover rounded">
+                    <span class="text-gold text-[10px] uppercase">${v.brand}</span>
+                    <h4 class="font-cinzel text-sm font-bold text-white truncate">${v.model}</h4>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+
+        </section>
+      `;
+    }
+
+    /* ==========================================================================
+       15. CONCIERGE SERVICES PAGE
+       ========================================================================== */
+    function renderServicesPage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 space-y-12">
+          <div class="text-center space-y-2">
+            <span class="text-gold text-xs uppercase tracking-widest font-semibold">EXECUTIVE OWNERSHIP</span>
+            <h1 class="font-cinzel text-3xl font-bold text-white">DE'LORA Concierge Services</h1>
+            <p class="text-xs text-gray-400 max-w-xl mx-auto">Providing ultra-high-net-worth clients with tailored support across global logistics and motorsport tuning.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-card rounded-xl p-8 border border-gold/30 gold-glow-hover space-y-4">
+              <div class="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center text-gold text-xl bg-obsidian">✈️</div>
+              <h3 class="font-cinzel text-xl font-bold text-white">Global White-Glove Logistics</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-light">Insured temperature-controlled air freight transport delivering hypercars directly to private estates, luxury yachts, or airport hangars globally.</p>
+            </div>
+
+            <div class="glass-card rounded-xl p-8 border border-gold/30 gold-glow-hover space-y-4">
+              <div class="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center text-gold text-xl bg-obsidian">🛠️</div>
+              <h3 class="font-cinzel text-xl font-bold text-white">Bespoke Performance Tuning</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-light">Custom titanium exhaust fabrication, ECU re-mapping, and interior customization performed by master engineers trained in Maranello & Silverstone.</p>
+            </div>
+
+            <div class="glass-card rounded-xl p-8 border border-gold/30 gold-glow-hover space-y-4">
+              <div class="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center text-gold text-xl bg-obsidian">🏎️</div>
+              <h3 class="font-cinzel text-xl font-bold text-white">Trackside Pit-Crew Support</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-light">Full track logistics, telemetry telemetry analysis, and dedicated mechanics for client track days at Nürburgring, Spa, and Yas Marina.</p>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    /* ==========================================================================
+       16. ABOUT PAGE (With Executive Ownership Details)
+       ========================================================================== */
+    function renderAboutPage(container) {
+      container.innerHTML = `
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 space-y-16">
+          
+          <!-- Story Banner -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">THE DE'LORA HERITAGE</span>
+              <h1 class="font-cinzel text-3xl sm:text-4xl font-bold text-white leading-tight">Architects of Extraordinary Automobile Ownership</h1>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                DE'LORA Automotive Group was established to bridge the gap between world-class automotive engineering and elite collector experiences. We specialize exclusively in rare hypercars, coachbuilt luxury automobiles, and limited-run performance EVs.
+              </p>
+            </div>
+            <div class="relative h-80 rounded-2xl overflow-hidden border border-gold/30">
+              <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <!-- EXECUTIVE CO-OWNERS SECTION -->
+          <div class="border-t border-gold/20 pt-12 space-y-8">
+            <div class="text-center space-y-2">
+              <span class="text-gold text-xs uppercase tracking-widest font-semibold">EXECUTIVE LEADERSHIP</span>
+              <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white">DE'LORA Executive Directorate</h2>
+              <p class="text-xs text-gray-400">Direct executive contact for private client inquiries and bespoke acquisitions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              
+              <!-- Owner 1 -->
+              <div class="glass-card rounded-2xl p-8 border border-gold/40 text-center space-y-4 gold-glow-hover">
+                <div class="w-20 h-20 rounded-full border-2 border-gold mx-auto flex items-center justify-center bg-obsidian text-2xl">
+                  👑
+                </div>
+                <div>
+                  <h3 class="font-cinzel text-xl font-bold text-white">Jelly Mae L. Dedace</h3>
+                  <p class="text-xs text-gold uppercase tracking-wider mt-0.5">Co-Owner & Executive Director</p>
+                </div>
+                <div class="text-xs text-gray-300 space-y-1 font-mono pt-2 border-t border-gray-800">
+                  <p><i class="fa-solid fa-phone text-gold mr-2"></i> 09703758766</p>
+                  <p><i class="fa-solid fa-envelope text-gold mr-2"></i> jellydedace04@gmail.com</p>
+                </div>
+              </div>
+
+              <!-- Owner 2 -->
+              <div class="glass-card rounded-2xl p-8 border border-gold/40 text-center space-y-4 gold-glow-hover">
+                <div class="w-20 h-20 rounded-full border-2 border-gold mx-auto flex items-center justify-center bg-obsidian text-2xl">
+                  👑
+                </div>
+                <div>
+                  <h3 class="font-cinzel text-xl font-bold text-white">Jamaica S. Dominguez</h3>
+                  <p class="text-xs text-gold uppercase tracking-wider mt-0.5">Co-Owner & Automotive Director</p>
+                </div>
+                <div class="text-xs text-gray-300 space-y-1 font-mono pt-2 border-t border-gray-800">
+                  <p><i class="fa-solid fa-phone text-gold mr-2"></i> 09687215497</p>
+                  <p><i class="fa-solid fa-envelope text-gold mr-2"></i> jamaica.dominguez01@gmail.com</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+      `;
+    }
+
+    /* ==========================================================================
+       17. CONTACT & INQUIRY FORM
+       ========================================================================== */
+    function renderContactPage(container) {
+      container.innerHTML = `
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+          <div class="text-center space-y-2 mb-10">
+            <span class="text-gold text-xs uppercase tracking-widest font-semibold">PRIVATE CLIENT INQUIRIES</span>
+            <h1 class="font-cinzel text-3xl font-bold text-white">Connect with Concierge</h1>
+            <p class="text-xs text-gray-400">Schedule a private vault viewing or request bespoke vehicle allocation.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-8 border border-gold/30 shadow-2xl">
+            <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase text-gray-300 mb-1">Your Full Name</label>
+                  <input type="text" required placeholder="Lord/Lady Smith" class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs uppercase text-gray-300 mb-1">Email Address</label>
+                  <input type="email" required placeholder="client@domain.com" class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase text-gray-300 mb-1">Phone Number</label>
+                  <input type="tel" placeholder="+63 900 000 0000" class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs uppercase text-gray-300 mb-1">Vehicle of Interest</label>
+                  <select class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none">
+                    <option>Bugatti Tourbillon Heritage</option>
+                    <option>Koenigsegg Jesko Absolut</option>
+                    <option>Pagani Utopia Bespoke</option>
+                    <option>Rolls-Royce Phantom Series II</option>
+                    <option>General Acquisition Consultation</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs uppercase text-gray-300 mb-1">Message / Acquisition Requirements</label>
+                <textarea rows="4" required placeholder="Detail your preferred specifications, delivery location, or appointment time..." class="w-full bg-obsidian border border-gray-700 rounded px-3 py-2 text-sm text-white focus:border-gold focus:outline-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 rounded text-xs uppercase tracking-wider transition-colors shadow-lg shadow-gold/20">
+                Send Direct Inquiry
+              </button>
+            </form>
+          </div>
+        </section>
+      `;
+    }
+
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      showToast("Inquiry submitted successfully. DE'LORA Concierge will contact you directly within 2 hours.");
+      e.target.reset();
+    }
+
+    /* ==========================================================================
+       18. APPLICATION INITIALIZATION
+       ========================================================================== */
+    function initializeApp() {
+      loadStateFromStorage();
+      renderAuthHeader();
+      updateCartBadge();
+      navigateTo('home');
+
+      // Sticky Header Opacity Control
+      window.addEventListener('scroll', () => {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) {
+          header.classList.add('bg-obsidian/95', 'shadow-2xl');
+        } else {
+          header.classList.remove('bg-obsidian/95', 'shadow-2xl');
+        }
+      });
+    }
+
+    // Launch Application when DOM ready
+    document.addEventListener('DOMContentLoaded', initializeApp);
+  </script>
+</body>
+</html>
